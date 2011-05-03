@@ -1,0 +1,45 @@
+<h1>Search minimal prices</h1>
+
+<%= form_tag "search", id: "search_form", method: "post", remote: true, dateType: "json" do %>
+  
+  <div class="field">
+    <%= content_tag :label do %>
+	  Departure city<br />
+      <%= text_field_tag :depart_city, params[:depart_city] %>
+	<% end %>
+  </div>
+  <br />
+  
+  <div class="field">
+    <%= content_tag :label do %>
+	  Start date<br />
+      <!-- <%= text_field_tag :depart_date, params[:depart_date] %> -->
+	  <%= date_select("depart_date", params[:depart_date]) %>
+	<% end %>
+  </div>
+  <br />
+  
+  <div class="field">
+    <%= content_tag :label do %>
+	  Type period<br />
+       <%= select_tag :type, options_for_select(["month", "season"]) %>
+	<% end %>
+  </div>
+  <br />
+  
+  <div class="field">
+    <%= content_tag :label do %>
+	  Duration (weeks)<br />
+      <%= select_tag "duration", options_for_select([0, 1, 2, 3, 4]) %>
+	<% end %>
+  </div>
+  <br />
+
+  <div class="field">
+    <%= submit_tag("Find") %>
+  </div>
+  <br />
+  
+<% end %>
+
+<div id="result"></div>
